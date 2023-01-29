@@ -11,4 +11,9 @@ func TestLogger(t *testing.T) {
 		logger := logger.Logger{}
 		logger.Log("test log")
 	})
+
+	t.Run("test log", func(t *testing.T) {
+		logger := logger.Logger{}
+		logger.Log("test log 2")
+	})
 }
