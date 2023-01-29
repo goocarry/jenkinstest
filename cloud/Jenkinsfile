@@ -1,0 +1,32 @@
+/* Requires the Docker Pipeline plugin */
+pipeline {
+    // agent {
+    //     dockerfile {
+    //         dir 'cloud'
+    //     }
+    // }
+    agent none
+    stages {
+        stage('build') {
+            agent {
+                dockerfile {
+                    dir 'cloud'
+                }
+            }
+            steps {
+                sh 'go version'
+            }
+        }
+        stage('test') {
+            agent {
+                docker {
+                    image 'postgres:12.6'
+                    args '-p 5432:5432 -e POSTGRES_PASSWORD=pass -e POSTGRES_USER=postgres'
+                }
+            }
+            steps {
+                sh 'make test'
+            }
+        }
+    }
+}
