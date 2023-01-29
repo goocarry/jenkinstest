@@ -3,7 +3,6 @@ pipeline {
     agent {
         dockerfile {
             dir 'cloud'
-            label 'test label'
         }
     }
     stages {
