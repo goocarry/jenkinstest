@@ -4,8 +4,6 @@ pipeline {
     stages {
         stage('build') {
             agent {
-                docker {
-                    // image 'golang:1.19.1-alpine'
                     dockerfile true
                     reuseNode true
                 }
