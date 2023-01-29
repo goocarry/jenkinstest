@@ -1,6 +1,11 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { dockerfile true }
+    agent {
+        dockerfile {
+            dir 'cloud'
+            label 'test label'
+        }
+    }
     stages {
         stage('build') {
             // agent {
