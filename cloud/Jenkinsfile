@@ -4,9 +4,8 @@ pipeline {
     stages {
         stage('build') {
             agent {
-                    dockerfile true
-                    reuseNode true
-                }
+                dockerfile true
+                reuseNode true
             }
             steps {
                 sh 'go version'
