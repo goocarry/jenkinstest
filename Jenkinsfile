@@ -5,6 +5,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'go version'
+                sh 'apk add --no-cache make'
                 sh 'make pgTestSetup'
                 sh 'make pgTestStart'
             }
