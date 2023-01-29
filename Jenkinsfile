@@ -5,6 +5,13 @@ pipeline {
         stage('build') {
             steps {
                 sh 'go version'
+                sh 'make pgTestSetup'
+                sh 'make pgTestStart'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'make test'
             }
         }
     }
